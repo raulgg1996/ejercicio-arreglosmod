@@ -49,26 +49,29 @@ public class Grupo
         {
             if(estudiantes[i]==null)
             return i;
-        }
-    }
-            
+        }return -1;
+    }       
      
 
 //terminar este metodo de tarea
-   public void darbaja(Estudiante claveEstudiante)
-   {
-       Estudiante eclave;
-       for(int i=0;i<estudiantes.length;i++)
-       {
-           if(claveEstudiante==estudiantes[i].getclave())
-           {
-               estudiantes[i]=null;
-            }
-            else
-            {
-                System.out.println("la clave no es correcta");
-            }
+
+
+  /**
+   * busca el estudiante con la clave dada.
+   * regresa false si el estudiante no esta inscrito.
+   * regresa true si se ha inscrito el estudiante correctamente.
+   */
+ public boolean darBaja(Estudiante unEstudiante)
+    {
+        //buscar estudiante con la clave dada y asignarle un null
+        int existe = this.buscarEstudiante(unEstudiante.dimeClave());
+        if(existe==-1)
+        {
+            return false;//el estudiante no esta inscrito
         }
+        estudiantes[existe] = null;// inscribe al estudiante
+        return true;
     
-    }
+        
+}
 }
